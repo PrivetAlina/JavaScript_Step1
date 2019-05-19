@@ -6,38 +6,197 @@
     <!--Подключение через файл<script src="/path/to/script.js"></script>-->
         <script>
         "use strict";
-        //1. Задать температуру в градусах по Цельсию. Вывести в alert соответствующую температуру в градусах по Фаренгейту. Подсказка: расчёт идёт по формуле: Tf = (9 / 5) * Tc + 32, где Tf – температура по Фаренгейту, Tc – температура по Цельсию
-        var Tc = prompt ('Задайте температуру в Цельсиях:');
-        console.log (`Соответствующая температура в градусах по Фаренгейту:, ${(9 / 5) * Tc + 32}`);
+//    1. Чему будет равен x? 
+            var a = 2;
+            var x = 1 + (a *= 2);
+            console.log(`Задание 1. Значенте х равно ${x}`);
 
-        /*2. Работа с переменными.
-        a) Объявить две переменные: admin и name. Записать в name строку «Василий»;
-        b) Скопировать значение из name в admin. Вывести admin (должно вывести «Василий»).*/
-        
-        var admin;
-        var name = 'Василий';
-        admin = name;
-        console.log (admin);
-           
-        
-        //3. Чему будет равно JS-выражение 1000 + "108"?
-        console.log (`${1000 + '108'}`);
-        
-        
-        /*4. *Самостоятельно разобраться с атрибутами тега script (async и defer).
-           
-        Специальные атрибуты async и defer используются для того, чтобы пока грузится внешний скрипт – браузер показал остальную (следующую за ним) часть страницы. Без них этого не происходит.
-        Разница между async и defer: атрибут defer сохраняет относительную последовательность скриптов, а async – нет. Кроме того, defer всегда ждёт, пока весь HTML-документ будет готов, а async – нет.*/
-           
-         console.log (typeof true); 
-        
+//    2. Объявить две целочисленные переменные — a и b и задать им произвольные начальные значения. Затем написать скрипт, который работает по следующему принципу:
+//    если a и b положительные, вывести их разность;
+//    если а и b отрицательные, вывести их произведение;
+//    если а и b разных знаков, вывести их сумму;
+//    Ноль можно считать положительным числом.
+            var a = +prompt ('Задание 2. Задайте число а:');
+            var b = +prompt ('Задание 2. Задайте число b:');
+            var user_text_2 = (`Задание 2. Вы задали числа ${a} и ${b}.`)
+            if ( a >= 0  && b >= 0) {
+                console.log (`${user_text_2} Числа положительные - вывожу разность: ${a-b}`);
+            }
+            else if ( a < 0  && b < 0) {
+                console.log (`${user_text_2} Числа отрицательные - вывожу произведение: ${a*b}`);
+            }
+            else if ( (a < 0  && b > 0)||(a > 0  && b < 0)) {
+                console.log (`${user_text_2} Числа разных знаков - вывожу сумму: ${a+b}`);
+            }
+            else {
+                console.log (`${user_text_2} Мда, человечество еще не научилось такое обрабатывать. Зайдите позднее.`)
+            }    
+            
+//    3. Присвоить переменной а значение в промежутке [0..15]. С помощью оператора switch организовать вывод чисел от a   до 15.
+            var a = prompt ('Задание 3. Задайте число в промежутке [0..15]:');
+            var user_text_3 = (`Задание 3. Вы ввели число ${a}, продолжаем ряд до 15:`);
+            switch (a){
+            case '0':
+                console.log (`${user_text_3} 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15`);
+                break;
+            case '1':
+                console.log (`${user_text_3} 2,3,4,5,6,7,8,9,10,11,12,13,14,15`);
+                break;
+            case '2':
+                console.log (`${user_text_3} 3,4,5,6,7,8,9,10,11,12,13,14,15`);
+                break;
+            case '3':
+                console.log (`${user_text_3} 4,5,6,7,8,9,10,11,12,13,14,15`);
+                break;
+            case '4':
+                console.log (`${user_text_3} 5,6,7,8,9,10,11,12,13,14,15`);
+                break;
+            case '5':
+                console.log (`${user_text_3} 6,7,8,9,10,11,12,13,14,15`);
+                break;
+            case '6':
+                console.log (`${user_text_3} 7,8,9,10,11,12,13,14,15`);
+                break;
+            case '7':
+                console.log (`${user_text_3} 8,9,10,11,12,13,14,15`);
+                break;
+            case '8':
+                console.log (`${user_text_3} 9,10,11,12,13,14,15`);
+                break;
+            case '9':
+                console.log (`${user_text_3} 10,11,12,13,14,15`);
+                break;
+            case '10':
+                console.log (`${user_text_3} 11,12,13,14,15`);
+                break;
+            case '11':
+                console.log (`${user_text_3} 12,13,14,15`);
+                break;
+            case '12':
+                console.log (`${user_text_3} 13,14,15`);
+                break;
+            case '13':
+                console.log (`${user_text_3} 14,15`);
+                break;
+            case '14':
+                console.log (`${user_text_3} 15`);
+                break;
+            case '15':
+                console.log (`Задание 3. Вы ввели число ${a}, весь ряд заполнен`);
+                break;
+            default:
+            console.log (`Задание 3. Вы ввели число ${a}, увы, оно не попадает в нужный интервал`);;
+            break;
+            }
+//    4. Реализовать четыре основные арифметические операции в виде функций с двумя параметрами. Обязательно использовать оператор return.
+            function sum (a, b) {
+                return (`Сумма двух чисел: ${a+b}`);
+            }
+            function minus (a, b) {
+                return (`Разность двух чисел: ${a-b}`);
+            }
+            function multi (a, b) {
+                return (`Произведение двух чисел: ${a*b}`);
+            }
+            function division (a, b) {
+                if (b == 0) {
+                    return (`Делить на 0 нельзя`);
+                }
+                else {
+                    return (`Результат деления двух чисел: ${a/b}`);
+                }
+            }
+            
+//    5.Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation), где arg1, arg2 — значения аргументов, operation — строка с названием операции. В зависимости от переданного значения выполнить одну из арифметических операций (использовать функции из пункта 5) и вернуть полученное значение (применить switch).
+   
+            function mathOperation (arg1, arg2, operation){
+                switch (operation){
+                case '+':
+                    return (sum (arg1, arg2));
+                    break;
+                case '-':
+                    return (minus (arg1, arg2));
+                    break;
+                case '*':
+                    return (multi (arg1, arg2));
+                    break;
+                case '/':
+                    return (division (arg1, arg2));
+                    break;
+                default:
+                    return (`Мда, человечество еще не научилось такое обрабатывать. Зайдите позднее.`);
+                    break;
+                }
+            }
+            var arg1 = +prompt ('Задание 5. Задайте число arg1:');
+            var arg2 = +prompt ('Задание 5. Задайте число arg2:');
+            var operation = prompt ('Задание 5. Задайте математическую операцию, используя + - * /');
+            var user_text_5 = (`Задание 5. Вы задали параметры ${arg1}, ${arg2}, ${operation}.`);
+            if (isNaN(arg1) || isNaN(arg2)) {
+                console.log (`${user_text_5} Мда, человечество еще не научилось такое обрабатывать. Зайдите позднее.`);    
+            }     
+            else {
+            console.log (`${user_text_5} ${mathOperation(arg1, arg2, operation)}`);
+            }
+       
+//            7. Сравнить null и 0. Объяснить результат.
+//            https://learn.javascript.ru/comparison#sravnenie-s-null-i-undefined
+            
+//    8. С помощью рекурсии организовать функцию возведения числа в степень. Формат: function power(val, pow), где val — заданное число, pow –— степень.
+            function power(val, pow) {  
+                if (pow > 1) {
+                    return (val * power(val, pow - 1)); 
+                } else {
+                    return val;
+                }
+            }
+            var val = +prompt ('Задание 8. Введи число, которое будем возводить в степень:');
+            var pow = +prompt ('Задание 8. Задай степень для этого числа:');
+            console.log (`Задание 8. Число ${val} в степени ${pow} равно ${power (val, pow)}`);
+
+//    9. Напишем первую игру — «Угадай число». Браузер будет загадывать случайное четырехзначное число, а мы будем отгадывать.
+//    Попытки отгадать число будут идти через диалоговое окно — prompt. Браузер будет сообщать в ответ, больше или меньше загаданного наш ответ.
+            var triesCounter = 1;
+            var hiddenNumber = Math.floor(Math.random() * 1000);
+//            console.log(`Загаданное число: ${hiddenNumber}`);
+            var playerNumber = +prompt ('Как ты думаешь, какое число я загадал?');
+            compare (hiddenNumber,playerNumber,triesCounter); 
+            
+            function compare (hiddenNumber,b,triesCounter){
+                if (isNaN(playerNumber)){
+                    console.log (`Задание 9. Ты все сломал. Число попыток: ${triesCounter}, я загадывал число ${hiddenNumber}`);
+                }
+
+                else if (hiddenNumber == playerNumber){        
+                    console.log (`Задание 9. Вот это да! Действительно загаданное число ${hiddenNumber}! Число попыток: ${triesCounter}.`);
+                    triesCounter = 1; 
+                    hiddenNumber = Math.floor(Math.random() * 1000);
+//                    console.log(`Новое загаданное число: ${hiddenNumber}`);
+                    playerNumber = +prompt ('Я загадал новое число. Давай сыграем еще, попробуй угадать загаданное число. Если не хочешь - просто введи букву');
+                    compare (hiddenNumber,playerNumber,triesCounter); 
+                }
+                else {
+                    if (hiddenNumber > playerNumber){ 
+                    console.log (`Задание 9. Ты ввел ${playerNumber}, a загаданне число больше. Число попыток: ${triesCounter}`);
+                    }
+                    else { 
+                    console.log (`Задание 9. Ты ввел ${playerNumber}, а загаданне число меньше. Число попыток: ${triesCounter}`);
+                    }
+                    triesCounter++;  
+                    playerNumber = +prompt ('Давай попробуем еще раз, попробуй угадать загаданное число');
+                    compare (hiddenNumber,playerNumber,triesCounter); 
+                 }
+            }
+             
     </script>
 </head>
 <body>
+<!--
     <p> Важная информация не покажется, пока не загрузится скрипт.</p>
     <script src="https://js.cx/hello/ads.js?speed=0"></script>
-<!--<script async src="https://js.cx/hello/ads.js?speed=0"></script>--> 
+<script async src="https://js.cx/hello/ads.js?speed=0"></script> 
     <p>Важная информация!</p>
+-->
 </body>
 </html>
 
