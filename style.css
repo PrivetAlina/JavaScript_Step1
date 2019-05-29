@@ -45,18 +45,10 @@ body{
     font-family: "Raleway-Regular";
     font-size: 18px;
 }
-
-
 h2{
-    font-family: Raleway-Black;
+    font-family: "Raleway-Bold-Italic";
 }
-p{
-    font-family: Raleway-Bold-Italic;
-    font-size: 20px;
-}
-
 input{
-
     background-color: black;
     color: aliceblue;
     border: none;
@@ -69,7 +61,6 @@ input{
     font-size: 20px;
     text-transform: uppercase; 
     font-family: Raleway-Bold-Italic;
-    
 }
 button{
     border: none;
@@ -79,5 +70,5 @@ button{
     background: #000000;
     font-size: 16px;
     font-family: "Roboto-Regular";
-    color: rgb(255, 255, 255);  
+    color: rgb(255, 255, 255); 
 }   
