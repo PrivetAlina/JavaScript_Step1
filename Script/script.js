@@ -1,4 +1,3 @@
-
 //1. Есть кнопка button рядом с ней есть текст (Hello) необходимо при нажатии на кнопку поменять текст кнопки на (Привет)
 
 //2. Есть кнопка button рядом с ней есть тэг <b></b> (Hello) необходимо при нажатии на кнопку поменять тэг на <h3></h3>
@@ -27,10 +26,7 @@ for (var i = 0; i < third.length; i++) {
     third[i].innerHTML = i;
 };
 
-
-
 //4. Создадим калькулятор 
-
 
 let sum = document.getElementById('sum');
 let minus = document.getElementById('minus');
@@ -59,8 +55,8 @@ division.onclick = function () {
     }
 };
 
-
 //5. Дан элемент ul, а в нем li #list. Вставьте перед элементом #list новую li с текстом 'Первый элемент списка'
+
 var arrList = document.getElementById('listItems').getElementsByTagName('li');
 var newItem = document.createElement("li");
 newItem.innerHTML = 'Первый элемент списка';
