@@ -1,78 +1,79 @@
-                
-// 1. Написать функцию, преобразующую число в объект. Передавая на вход число от 0 до 999, надо получить на выходе объект, в котором в соответствующих свойствах описаны единицы, десятки и сотни. Например, для числа 245 надо получить следующий объект: {‘единицы’: 5, ‘десятки’: 4, ‘сотни’: 2}. Если число превышает 999, необходимо выдать соответствующее сообщение с помощью console.log и вернуть пустой объект.                
 
-var numberObj = {
-        ones: 0,
-        tens: 0,
-        hundrets: 0
-}
-var max = 999;
-var min = 0;
-function createNumberObj (n) {
-            if ( n >= min && n <= max) {
-                numberObj.hundrets = n/100>>0;
-                numberObj.tens = (n%100)/10>>0;
-                numberObj.ones = (n%10);
-            }
-            else {
-            console.log (`Число не попадает интервал [0..999]`);
-            }
-            return (console.log (numberObj))
-        }
-var currentNumber = + prompt ('Введите число'); 
-createNumberObj (currentNumber);
-     
-//2. Продолжить работу с интернет-магазином:
-//В прошлом домашнем задании вы реализовали корзину на базе массивов. Какими объектами можно заменить их элементы?
-//Реализуйте такие объекты.
-//Перенести функционал подсчета корзины на объектно-ориентированную базу.
+//1. Есть кнопка button рядом с ней есть текст (Hello) необходимо при нажатии на кнопку поменять текст кнопки на (Привет)
 
+//2. Есть кнопка button рядом с ней есть тэг <b></b> (Hello) необходимо при нажатии на кнопку поменять тэг на <h3></h3>
 
-var titles = ['Single Thruster 2014', 'Freestyle Wave FSW', 'The White Collection SURFBOARD 2014','OG SCALLOP SOLID','STRIPE 19 QS','YOKE 19 QS'];
-var prices = [865, 770, 1580.7,765, 230.5, 1130.7];
-var currencies = ['€','€','€','€','€','€'];        
-var basketProd = [0,2];
-var basketQuan = [3,4];
+let helloButton = document.getElementById('helloButton');
 
-//* Подумать над глобальными сущностями. К примеру, сущность «Продукт» в интернет-магазине актуальна не только для корзины, но и для каталога. Стремиться нужно к тому, чтобы объект «Продукт» имел единую структуру для различных модулей сайта, но в разных местах давал возможность вызывать разные методы
-var product = {
-     creatProductItem: function (tit, pric, curr) {
-            for (let i = 0; i < tit.length; i++) {
-				let newItem = {
-				    title: tit [i],
-				    price: pric [i],
-				    currency: curr [i]
-                }
-				product.items.push (newItem);
-				}
-			},
-    items: []  
-}
+let second = document.querySelector('.secondHello');
 
-var basket = {
-        addToBasket: function (addProd,quan) {
-            for (let i = 0; i < quan.length; i++) {
-                let j=addProd[i]
-				    this.addedProduct.push (product.items[j]),
-				    this.quantity.push (quan [i])
-				}
-			},
-    
-        countBasketPrice: function (prodArr, quanArr) {
-            let sum = 0;
-            for (let i = 0; i < prodArr.length; i++) {
-					sum += (prodArr[i].price * quanArr[i]);
-				}
-				return sum;
-			},
-            addedProduct: [],
-            quantity: [],
-}
-product.creatProductItem (titles, prices, currencies);
+helloButton.onclick = function () {
+     helloButton.innerHTML = ('Привет!');
+        second.innerHTML = ('<h3>Hello! Big second task! </h3>');
+};
 
-console.log (product);
-basket.addToBasket (basketProd,basketQuan);
-console.log (basket);
-console.log (basket.countBasketPrice (basket.addedProduct, basket.quantity));
+//3. Дан код 
+//<h2>Заголовок.</h2>
+//<ul>
+//<li>list</li>
+//<li>list</li>
+//<li>list</li>
+//<li>list</li>
+//</ul>
+//Поменяйте содержимое списка на текс list их порядковый номер в коде.
+
+let third = document.querySelectorAll('li.third_task');
+for (var i = 0; i < third.length; i++) {
+    third[i].innerHTML = i;
+};
 
 
+
+//4. Создадим калькулятор 
+
+
+let sum = document.getElementById('sum');
+let minus = document.getElementById('minus');
+let multi = document.getElementById('multi');
+let division = document.getElementById('division');
+let result = document.getElementById('result');
+let firstNumber = document.getElementById('firstNumber');
+let secondNumber = document.getElementById('secondNumber');
+
+sum.onclick = function () {
+     result.innerHTML = +firstNumber.value + +secondNumber.value;
+};
+minus.onclick = function () {
+     result.innerHTML = +firstNumber.value - +secondNumber.value;
+};
+
+multi.onclick = function () {
+     result.innerHTML = +firstNumber.value * +secondNumber.value;
+};
+
+division.onclick = function () {
+    if (secondNumber.value == 0) {
+        result.innerHTML = ('Делить на 0 нельзя')
+    } else {
+     result.innerHTML = +firstNumber.value / +secondNumber.value;
+    }
+};
+
+
+//5. Дан элемент ul, а в нем li #list. Вставьте перед элементом #list новую li с текстом 'Первый элемент списка'
+var arrList = document.getElementById('listItems').getElementsByTagName('li');
+var newItem = document.createElement("li");
+newItem.innerHTML = 'Первый элемент списка';
+listItems.insertBefore(newItem,arrList[0]);    
+
+// Не успела остальное :( 
+
+//6. Упростим задачу шахматной доски, создать просто доску 8 на 8, в которой будут черные и белые ячейки.
+
+//3)1)** Создать функцию, генерирующую шахматную доску. При этом можно использовать любые html-теги по своему желанию. Доска должна быть разлинована соответствующим образом, т.е.
+//чередовать черные и белые ячейки. Строки должны нумероваться числами от 1 до 8, столбцы
+//– латинскими буквами A, B, C, D, E, F, G, H.
+//2) *Заполнить созданную таблицу буквами, отвечающими за шахматную фигуру, например К-
+//король, Ф – ферзь и тп., причем все фигуры должны стоять на своих местах и быть
+//соответственно черными и белыми.
+//3) * Заменить буквы, обозначающие фигуры картинками.
