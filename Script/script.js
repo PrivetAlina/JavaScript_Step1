@@ -1,75 +1,219 @@
-//1. Есть кнопка button рядом с ней есть текст (Hello) необходимо при нажатии на кнопку поменять текст кнопки на (Привет)
+//1. Быки и коровы
+//Картинки по запросу быки и коровы правила
+//Задумано тайное число «3219». Результат: две «коровы» (две цифры: «2» и «3» — угаданы на неверных позициях) и один «бык» (одна цифра «1» угадана вплоть до позиции). Игроки делают попытки угадать по очереди. Побеждает тот, кто угадает число первым, при условии, что он не начинал игру.
+//
+//var goal = generate();
+//function randomize (){
+//    return Math.floor (Math.random() * 10);
+//};
+//
+//function generate() {
+//    let arr = [];
+//    while (arr.length < 4) {
+//        let arrItem = randomize ();
+//        
+//        if (arr.indexOf(arrItem) < 0 ){
+//            // [0, 1, 2, 3] indexOf (5) === -1 если элемента нет - то вовзращает -1 всегад
+//            arr.push (arrItem);
+//            };
+//        
+//    };
+//        
+//    return arr;
+//};
+//
+//function round (etl){
+//    let bulls = 0;
+//    let cows = 0;
+//    let attempt = [...prompt ('Введите значение')];//'1234'=>['1','2','3','4']
+//
+//    for (let i = 0; i < 4; i++){
+//        if(+attempt [i] === etl[i]) {
+//            bulls ++;
+//        } else if (etl.indexOf (+attempt [i]) >=0){ // проверяем, присутствует ли вообще в массиве
+//            cows++;
+//        }
+//    }
+//    console.log (`Ваш вариант: ${attempt}`);
+//    console.log (`Быков ${bulls}, коровы ${cows}`);
+//    
+//    return (bulls === 4 ? false : true); 
+//};
+//
+//
+//function game(status, att) {
+//    console.log (goal);
+//    while (status){
+//        if (att > 0){
+//            status = round (goal);
+//            status ? console.log (`Осталось ${att--} ходов`): console.log (`Игра выграна`);
+//            if (!status){
+//                return false;
+//            }
+//        } else {
+//            status = false;
+//            return false; // прерываем фу
+//        }
+//    }
+//};
+//
+//
+//game(true, 10);
+//
+////2. Кто хочет стать миллионером
+//
+//function game (arr) {
+//    let play = true;
+//    let round = 0;
+//    
+//    while (play) {
+//        if (round < questions.length){
+//            let question = generateQuestion(arr,round);
+//            let answer = +prompt (`${question.qT} \n ${question.qA}`); 
+//             
+//            play = check (answer, round);
+//
+//            round++;
+//        }else {
+//            play = false;
+//        }
+//    }
+//};
+//function check (ans, rnd){
+//    if (ans === questions[rnd].correct){
+//        alert ('все ок, продолжаем');
+//        return (true);
+//        
+//    } 
+//    else {
+//        alert('Неправильно. Конец.')
+//        return (false);
+//    }
+//}
+//
+//
+//function generateQuestion (arr, rnd) {
+//    let answers = '';
+//    for (let i = 0; i < 4; i++) {
+//        answers += `${i + 1} - ${arr [rnd].answers [i]} \n`;//\n - перенос каретки
+//    }
+//    let text = arr[rnd].text;
+//    let correct = arr [rnd].correct - 1;
+//    
+//    return {
+//				qT: text,
+//				qC: correct,
+//				qA: answers
+//			}
+//};
+//game (questions);
+//
+//
+//
 
-//2. Есть кнопка button рядом с ней есть тэг <b></b> (Hello) необходимо при нажатии на кнопку поменять тэг на <h3></h3>
 
-let helloButton = document.getElementById('helloButton');
+////6. Упростим задачу шахматной доски, создать просто доску 8 на 8, в которой будут черные и белые ячейки.
+let board = document.createElement("div");
+board.className = "board";
 
-let second = document.querySelector('.secondHello');
+document.body.appendChild(board);
+ 
+function createSquare (ClassName){
+   let square = document.createElement('div');
+    square.className = ClassName; 
+    return square;
+               
+}
+function letterGeneration (number){
+    let letters = 'ABCDEFGH'
+    return letters[number];
+}
 
-helloButton.onclick = function () {
-     helloButton.innerHTML = ('Привет!');
-        second.innerHTML = ('<h3>Hello! Big second task! </h3>');
+for (let i = 0; i<=9; i++) {  
+    for (let j = 0; j<=9; j++) {   
+        if (i==0 || i==9) {
+            let lettersSquare = createSquare ('letterNumberSquare');
+                if (j!=0 && j !=9) {
+                lettersSquare.innerHTML =  letterGeneration (j-1);
+            }
+            board.appendChild (lettersSquare); 
+        } else { 
+            if (j==0 || j ==9) {
+                let numbersSquare = createSquare ('letterNumberSquare');
+                numbersSquare.innerHTML = i;
+                board.appendChild (numbersSquare);
+            } else {    
+                if ((i + j) % 2 == 0) {
+                    board.appendChild (createSquare ('whiteSquare'));
+                } else {
+                    board.appendChild (createSquare ('blackSquare'));
+                };  
+            };
+        };
+    };
 };
 
-//3. Дан код 
-//<h2>Заголовок.</h2>
-//<ul>
-//<li>list</li>
-//<li>list</li>
-//<li>list</li>
-//<li>list</li>
-//</ul>
-//Поменяйте содержимое списка на текс list их порядковый номер в коде.
+//2. Сделать генерацию корзины динамической: верстка корзины не должна находиться в HTML-структуре. Там должен быть только div, в который будет вставляться корзина, сгенерированная на базе JS:
+//Пустая корзина должна выводить строку «Корзина пуста»;
+//Наполненная должна выводить «В корзине: n товаров на сумму m рублей».
 
-let third = document.querySelectorAll('li.third_task');
-for (var i = 0; i < third.length; i++) {
-    third[i].innerHTML = i;
-};
+let basketImg = document.createElement("img");
+basketImg.src='Images/trash.png';
+basketImg.className = 'basketImg';
+document.body.appendChild (basketImg);
 
-//4. Создадим калькулятор 
+var titles = ['Single Thruster 2014', 'Freestyle Wave FSW', 'The White Collection SURFBOARD 2014','OG SCALLOP SOLID','STRIPE 19 QS','YOKE 19 QS'];
+var prices = [865, 770, 1580.7,765, 230.5, 1130.7];
+var currencies = ['€','€','€','€','€','€'];     
+var basketProd = [0,2];
+var basketQuan = [3,4];
 
-let sum = document.getElementById('sum');
-let minus = document.getElementById('minus');
-let multi = document.getElementById('multi');
-let division = document.getElementById('division');
-let result = document.getElementById('result');
-let firstNumber = document.getElementById('firstNumber');
-let secondNumber = document.getElementById('secondNumber');
+var product = {
+	     creatProductItem: function (tit, pric, curr) {
+	            for (let i = 0; i < tit.length; i++) {
+					let newItem = {
+					    title: tit [i],
+					    price: pric [i],
+					    currency: curr [i]
+	                }
+					product.items.push (newItem);
+					}
+				},
+	    items: []  
+	}
+	
+var basket = {
+     addToBasket: function (addProd,quan) {
+         for (let i = 0; i < quan.length; i++) {
+             let j=addProd[i]
+	    this.addedProduct.push (product.items[j]),
+	    this.quantity.push (quan [i])
+	}
+},
+	
+    countBasketPrice: function (prodArr, quanArr) {
+        let sum = 0;
+        for (let i = 0; i < prodArr.length; i++) {
+            sum += (prodArr[i].price * quanArr[i]);
+        }
+        return sum;
+        },
+	   addedProduct: [],
+	   quantity: [],
+	}
 
-sum.onclick = function () {
-     result.innerHTML = +firstNumber.value + +secondNumber.value;
-};
-minus.onclick = function () {
-     result.innerHTML = +firstNumber.value - +secondNumber.value;
-};
+product.creatProductItem (titles, prices, currencies);
+basket.addToBasket (basketProd,basketQuan);
 
-multi.onclick = function () {
-     result.innerHTML = +firstNumber.value * +secondNumber.value;
-};
 
-division.onclick = function () {
-    if (secondNumber.value == 0) {
-        result.innerHTML = ('Делить на 0 нельзя')
-    } else {
-     result.innerHTML = +firstNumber.value / +secondNumber.value;
-    }
-};
+let basketStatus = document.createElement("div");
+basketStatus.className = 'basketStatusText';
+if (basket.addedProduct == 0) {
+    basketStatus.innerHTML = 'Корзина пока пуста'; 
+    
+} else {
+    basketStatus.innerHTML = (`В корзине ${basket.addedProduct.length} товара на сумму ${basket.countBasketPrice (basket.addedProduct, basket.quantity)}€`);  
+}
+document.body.appendChild (basketStatus);
 
-//5. Дан элемент ul, а в нем li #list. Вставьте перед элементом #list новую li с текстом 'Первый элемент списка'
 
-var arrList = document.getElementById('listItems').getElementsByTagName('li');
-var newItem = document.createElement("li");
-newItem.innerHTML = 'Первый элемент списка';
-listItems.insertBefore(newItem,arrList[0]);    
-
-// Не успела остальное :( 
-
-//6. Упростим задачу шахматной доски, создать просто доску 8 на 8, в которой будут черные и белые ячейки.
-
-//3)1)** Создать функцию, генерирующую шахматную доску. При этом можно использовать любые html-теги по своему желанию. Доска должна быть разлинована соответствующим образом, т.е.
-//чередовать черные и белые ячейки. Строки должны нумероваться числами от 1 до 8, столбцы
-//– латинскими буквами A, B, C, D, E, F, G, H.
-//2) *Заполнить созданную таблицу буквами, отвечающими за шахматную фигуру, например К-
-//король, Ф – ферзь и тп., причем все фигуры должны стоять на своих местах и быть
-//соответственно черными и белыми.
-//3) * Заменить буквы, обозначающие фигуры картинками.
