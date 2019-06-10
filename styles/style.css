@@ -1,0 +1,31 @@
+body{
+    background-color: black;
+}
+#roulette {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#roulette img {
+    height: 15vh;
+    margin: 2vh;        
+}
+#bigImg {
+	display: flex;
+    justify-content:space-around;
+}
+#bigImg img {
+    height: 30vh;
+    margin-bottom: 10px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+button{
+	background-color: white;
+    border: 2px solid white;
+    border-radius: 3px;
+    padding: 10px 25px;
+    text-transform: uppercase;
+}
